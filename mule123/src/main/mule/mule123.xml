@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f9dd0f60-edfd-40c3-a44c-40374de67fb2" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule123Flow" doc:id="62902c63-000a-4888-ab41-08516c85f85c" >
+		<http:listener doc:name="Listener" doc:id="4b319522-5936-46cc-9414-96baa185625a" config-ref="HTTP_Listener_config" path="/mule1234"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4aa0618a-fe8a-4f55-9d7f-1ea10ed3c541" message="message received"/>
+		<set-payload value="completed" doc:name="Set Payload" doc:id="26808d3a-1a42-4e64-8422-be988cb856da" />
+		<logger level="INFO" doc:name="Logger" doc:id="bb3a5e5c-9cf0-45a8-8a82-151074ca340e" message="completed"/>
+	</flow>
+</mule>
